@@ -11,6 +11,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -25,7 +26,8 @@ public class JavaFXApplication1 extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("ui/mainmenu/MainMenuDocument.fxml"));
         
         Scene scene = new Scene(root);
-        
+        stage.getIcons().add(new Image("/luivet/ui/res/sinimagen.png"));
+        stage.setTitle("Luivet - Gebo 2018");
         stage.setScene(scene);
         stage.show();
     }
