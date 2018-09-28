@@ -159,6 +159,11 @@
                                           <TableColumn prefWidth="75.0" text="Razón" />
                                        </columns>
                                     </TableView>
+                                    <Button layoutX="638.0" layoutY="53.0" mnemonicParsing="false">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="BELL" />
+                                       </graphic>
+                                    </Button>
                                  </children>
                               </AnchorPane>
                            </content>
@@ -239,13 +244,42 @@
                         </Tab>
                         <Tab styleClass="tab-main" text="Productos">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="14.0" text="Productos" textFill="#e2e2e2">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField layoutX="14.0" layoutY="46.0" promptText="Buscar" />
+                                    <Button layoutX="204.0" layoutY="47.0" mnemonicParsing="false">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="SEARCH" />
+                                       </graphic>
+                                    </Button>
+                                    <Button layoutX="250.0" layoutY="47.0" mnemonicParsing="false">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="PLUS" />
+                                       </graphic>
+                                    </Button>
+                                    <Button layoutX="293.0" layoutY="47.0" mnemonicParsing="false">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="MINUS" />
+                                       </graphic>
+                                    </Button>
+                                    <TableView layoutX="14.0" layoutY="131.0" prefHeight="387.0" prefWidth="450.0">
+                                      <columns>
+                                        <TableColumn prefWidth="84.0" text="Articulo" />
+                                        <TableColumn prefWidth="66.0" text="ID" />
+                                        <TableColumn prefWidth="86.0" text="Categoría" />
+                                        <TableColumn prefWidth="156.0" text="Proxima aplicación" />
+                                        
+                                        
+                                      </columns>
+                                    </TableView>
+                                    <ComboBox layoutX="14.0" layoutY="93.0" prefWidth="150.0" promptText="Filtrar por categoría" />
+                                 </children></AnchorPane>
                           </content>
-                        </Tab>
-                        <Tab styleClass="tab-main" text="Estudios complementarios">
-                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                           </content>
                         </Tab>
                         <Tab styleClass="tab-main" text="En espera">
                            <content>

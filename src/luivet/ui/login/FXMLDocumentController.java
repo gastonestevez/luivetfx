@@ -12,8 +12,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -29,8 +27,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleLoginButtonAction(ActionEvent event) {
         String uName = userName.getText();
-        String uPwd = DigestUtils.shaHex(password.getText());
-    }
+   }
     
     @FXML
     private void handleQuitButton(ActionEvent event){
