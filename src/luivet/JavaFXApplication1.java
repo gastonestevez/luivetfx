@@ -13,6 +13,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import luivet.connection.Conexion;
+import luivet.handler.Handler;
 
 /**
  *
@@ -22,9 +24,10 @@ public class JavaFXApplication1 extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        //Parent root = FXMLLoader.load(getClass().getResource("ui/login/FXMLDocument.fxml"));
+        Conexion.getInstance();
+        Handler.getInstance();
+//Parent root = FXMLLoader.load(getClass().getResource("ui/login/FXMLDocument.fxml"));
         Parent root = FXMLLoader.load(getClass().getResource("ui/mainmenu/MainMenuDocument.fxml"));
-        
         Scene scene = new Scene(root);
         stage.getIcons().add(new Image("/luivet/ui/res/sinimagen.png"));
         stage.setTitle("Luivet - Gebo 2018");

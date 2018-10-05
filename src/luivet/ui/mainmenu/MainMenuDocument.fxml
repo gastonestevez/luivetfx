@@ -37,23 +37,23 @@
                            <content>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <Button layoutX="230.0" layoutY="53.0" mnemonicParsing="false">
+                                    <Button fx:id="searchClientButton" layoutX="230.0" layoutY="53.0" mnemonicParsing="false" onAction="#searchClient">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="SEARCH" />
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="323.0" layoutY="53.0" mnemonicParsing="false">
+                                    <Button fx:id="modClientButton" layoutX="323.0" layoutY="53.0" mnemonicParsing="false" onAction="#modClient">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="PENCIL" />
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="276.0" layoutY="53.0" mnemonicParsing="false">
+                                    <Button fx:id="addClientButton" layoutX="276.0" layoutY="53.0" mnemonicParsing="false" onAction="#addClient">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="PLUS" />
                                        </graphic>
                                     </Button>
-                                    <JFXTextField layoutX="14.0" layoutY="51.0" prefHeight="37.0" prefWidth="198.0" promptText="Buscar" />
-                                    <Button layoutX="369.0" layoutY="53.0" mnemonicParsing="false">
+                                    <JFXTextField fx:id="searchClientField" layoutX="14.0" layoutY="51.0" onAction="#searchClient" prefHeight="37.0" prefWidth="198.0" promptText="Buscar" />
+                                    <Button fx:id="delClientButton" layoutX="369.0" layoutY="53.0" mnemonicParsing="false" onAction="#delClient">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="MINUS" />
                                        </graphic>
@@ -63,15 +63,12 @@
                                           <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <TableView layoutX="15.0" layoutY="110.0" prefHeight="150.0" prefWidth="394.0">
+                                    <TableView fx:id="clientTable" layoutX="15.0" layoutY="110.0" prefHeight="150.0" prefWidth="394.0">
                                       <columns>
-                                        <TableColumn prefWidth="75.0" text="Nombre" />
-                                        <TableColumn prefWidth="90.0" text="Dirección" />
-                                        <TableColumn prefWidth="80.0" text="Celular" />
                                         
                                       </columns>
                                     </TableView>
-                                    <TableView layoutX="500.0" layoutY="356.0" prefHeight="169.0" prefWidth="480.0">
+                                    <TableView fx:id="visitTable" layoutX="500.0" layoutY="356.0" prefHeight="169.0" prefWidth="480.0">
                                       <columns>
                                         <TableColumn prefWidth="75.0" text="Fecha" />
                                         <TableColumn prefWidth="100.0" text="Ficha" />
@@ -82,15 +79,11 @@
                                           <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <TableView layoutX="500.0" layoutY="110.0" prefHeight="152.0" prefWidth="311.0">
+                                    <TableView fx:id="petTable" layoutX="500.0" layoutY="110.0" prefHeight="152.0" prefWidth="311.0">
                                       <columns>
-                                        <TableColumn prefWidth="75.0" text="Nombre" />
-                                        <TableColumn prefWidth="75.0" text="Raza" />
-                                        <TableColumn prefWidth="80.0" text="Especie" />
-                                        <TableColumn prefWidth="75.0" text="Edad" />
                                       </columns>
                                     </TableView>
-                                    <ImageView fitHeight="147.0" fitWidth="147.0" layoutX="833.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="petPicture" fitHeight="147.0" fitWidth="147.0" layoutX="833.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
                                        <effect>
                                           <Bloom />
                                        </effect>
@@ -103,17 +96,17 @@
                                           <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="547.0" layoutY="53.0" mnemonicParsing="false">
+                                    <Button fx:id="modPetButton" layoutX="547.0" layoutY="53.0" mnemonicParsing="false" onAction="#modPet">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="PENCIL" />
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="500.0" layoutY="53.0" mnemonicParsing="false">
+                                    <Button fx:id="addPetButton" layoutX="500.0" layoutY="53.0" mnemonicParsing="false" onAction="#addPet">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="PLUS" />
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="593.0" layoutY="53.0" mnemonicParsing="false">
+                                    <Button fx:id="delPetButton" layoutX="593.0" layoutY="53.0" mnemonicParsing="false" onAction="#delPet">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="MINUS" />
                                        </graphic>
@@ -123,43 +116,43 @@
                                           <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="62.0" layoutY="307.0" mnemonicParsing="false">
+                                    <Button fx:id="modTurnButton" layoutX="62.0" layoutY="307.0" mnemonicParsing="false" onAction="#modTurn">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="PENCIL" />
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="15.0" layoutY="307.0" mnemonicParsing="false">
+                                    <Button fx:id="addTurnButton" layoutX="15.0" layoutY="307.0" mnemonicParsing="false" onAction="#addTurn">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="PLUS" />
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="108.0" layoutY="307.0" mnemonicParsing="false">
+                                    <Button fx:id="delTurnButton" layoutX="108.0" layoutY="307.0" mnemonicParsing="false" onAction="#delTurn">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="MINUS" />
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="550.0" layoutY="307.0" mnemonicParsing="false">
+                                    <Button fx:id="modVisitButton" layoutX="550.0" layoutY="307.0" mnemonicParsing="false" onAction="#modVisit">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="PENCIL" />
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="503.0" layoutY="307.0" mnemonicParsing="false">
+                                    <Button fx:id="addVisitButton" layoutX="503.0" layoutY="307.0" mnemonicParsing="false" onAction="#addVisit">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="PLUS" />
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="596.0" layoutY="307.0" mnemonicParsing="false">
+                                    <Button fx:id="delVisitButton" layoutX="596.0" layoutY="307.0" mnemonicParsing="false" onAction="#delVisit">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="MINUS" />
                                        </graphic>
                                     </Button>
-                                    <TableView layoutX="15.0" layoutY="356.0" prefHeight="169.0" prefWidth="394.0">
+                                    <TableView fx:id="turnTable" layoutX="15.0" layoutY="356.0" prefHeight="169.0" prefWidth="394.0">
                                        <columns>
                                           <TableColumn prefWidth="75.0" text="Fecha" />
                                           <TableColumn prefWidth="75.0" text="Razón" />
                                        </columns>
                                     </TableView>
-                                    <Button layoutX="638.0" layoutY="53.0" mnemonicParsing="false">
+                                    <Button fx:id="waitPetButton" layoutX="638.0" layoutY="53.0" mnemonicParsing="false" onAction="#addWaitingList">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="BELL" />
                                        </graphic>
@@ -177,8 +170,8 @@
                                           <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <JFXDatePicker layoutX="14.0" layoutY="49.0" prefHeight="37.0" prefWidth="242.0" promptText="Fecha" />
-                                    <TableView layoutX="14.0" layoutY="86.0" prefHeight="436.0" prefWidth="530.0">
+                                    <JFXDatePicker fx:id="dateTurnSearchField" layoutX="14.0" layoutY="49.0" onAction="#loadDateTurn" prefHeight="37.0" prefWidth="242.0" promptText="Fecha" />
+                                    <TableView fx:id="turnResultTable" layoutX="14.0" layoutY="86.0" onKeyReleased="#searchClient" prefHeight="436.0" prefWidth="530.0">
                                       <columns>
                                         <TableColumn prefWidth="75.0" text="Dia" />
                                         <TableColumn prefWidth="75.0" text="Hora" />
@@ -187,7 +180,7 @@
                                         
                                       </columns>
                                     </TableView>
-                                    <ComboBox layoutX="260.0" layoutY="55.0" prefHeight="25.0" prefWidth="170.0" promptText="Filtro Fechas">
+                                    <ComboBox fx:id="dateTurnCombo" layoutX="260.0" layoutY="55.0" onAction="#loadDateTurn" prefHeight="25.0" prefWidth="170.0" promptText="Filtro Fechas">
                                         <items>
                                           <FXCollections fx:factory="observableArrayList">
                                             <String fx:value="Día actual" />
@@ -213,7 +206,7 @@
                                           <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <TableView layoutX="628.0" layoutY="50.0" prefHeight="92.0" prefWidth="357.0">
+                                    <TableView fx:id="clientResultTable" layoutX="628.0" layoutY="50.0" prefHeight="92.0" prefWidth="357.0">
                                       <columns>
                                         <TableColumn prefWidth="75.0" text="Nombre" />
                                         <TableColumn prefWidth="80.0" text="Dirección" />
@@ -221,7 +214,7 @@
                                         <TableColumn prefWidth="80.0" text="Telefono" />
                                       </columns>
                                     </TableView>
-                                    <ComboBox layoutX="438.0" layoutY="55.0" prefHeight="25.0" prefWidth="105.0" promptText="Filtro Razon">
+                                    <ComboBox fx:id="reasonTurnCombo" layoutX="438.0" layoutY="55.0" onAction="#loadDateTurn" prefHeight="25.0" prefWidth="105.0" promptText="Filtro Razon">
                                         <items>
                                           <FXCollections fx:factory="observableArrayList">
                                             <String fx:value="Observación" />
@@ -235,7 +228,7 @@
                                           </FXCollections>
                                         </items>
                                     </ComboBox>
-                                    <TextArea layoutX="628.0" layoutY="178.0" prefHeight="169.0" prefWidth="359.0" promptText="Nota de turno">
+                                    <TextArea fx:id="turNoteResultArea" layoutX="628.0" layoutY="178.0" prefHeight="169.0" prefWidth="359.0" promptText="Nota de turno">
                                        <font>
                                           <Font size="14.0" />
                                        </font></TextArea>
@@ -251,23 +244,23 @@
                                           <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <JFXTextField layoutX="14.0" layoutY="46.0" promptText="Buscar" />
-                                    <Button layoutX="204.0" layoutY="47.0" mnemonicParsing="false">
+                                    <JFXTextField id="productSearchField" layoutX="14.0" layoutY="46.0" promptText="Buscar" />
+                                    <Button fx:id="searchProductButton" layoutX="204.0" layoutY="47.0" mnemonicParsing="false" onAction="#loadSearchProduct">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="SEARCH" />
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="250.0" layoutY="47.0" mnemonicParsing="false">
+                                    <Button fx:id="addProductButton" layoutX="250.0" layoutY="47.0" mnemonicParsing="false" onAction="#loadAddProduct">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="PLUS" />
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="293.0" layoutY="47.0" mnemonicParsing="false">
+                                    <Button fx:id="delProductButton" layoutX="293.0" layoutY="47.0" mnemonicParsing="false" onAction="#loadDelProduct">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="MINUS" />
                                        </graphic>
                                     </Button>
-                                    <TableView layoutX="14.0" layoutY="131.0" prefHeight="387.0" prefWidth="450.0">
+                                    <TableView fx:id="productResultTable" layoutX="14.0" layoutY="131.0" prefHeight="387.0" prefWidth="450.0">
                                       <columns>
                                         <TableColumn prefWidth="84.0" text="Articulo" />
                                         <TableColumn prefWidth="66.0" text="ID" />
@@ -277,7 +270,7 @@
                                         
                                       </columns>
                                     </TableView>
-                                    <ComboBox layoutX="14.0" layoutY="93.0" prefWidth="150.0" promptText="Filtrar por categoría" />
+                                    <ComboBox fx:id="categoryProductCombo" layoutX="14.0" layoutY="93.0" onAction="#loadSearchProduct" prefWidth="150.0" promptText="Filtrar por categoría" />
                                  </children></AnchorPane>
                           </content>
                         </Tab>
@@ -290,7 +283,7 @@
                                           <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <TableView layoutX="14.0" layoutY="49.0" prefHeight="210.0" prefWidth="383.0">
+                                    <TableView fx:id="waitPetTable" layoutX="14.0" layoutY="49.0" prefHeight="210.0" prefWidth="383.0">
                                       <columns>
                                         <TableColumn prefWidth="75.0" text="Cliente" />
                                         <TableColumn prefWidth="75.0" text="Mascota" />
@@ -299,22 +292,22 @@
                                         
                                       </columns>
                                     </TableView>
-                                    <Button alignment="CENTER" layoutX="403.0" layoutY="90.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="213.0" text=" Historial clínico">
+                                    <Button fx:id="loadWaitVisitButton" alignment="CENTER" layoutX="403.0" layoutY="90.0" mnemonicParsing="false" onAction="#loadWaitVisit" prefHeight="39.0" prefWidth="213.0" text=" Historial clínico">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="LIST" />
                                        </graphic>
                                     </Button>
-                                    <Button alignment="CENTER" layoutX="403.0" layoutY="141.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="213.0" text=" Ya atendido">
+                                    <Button fx:id="finishWaitButton" alignment="CENTER" layoutX="403.0" layoutY="141.0" mnemonicParsing="false" onAction="#loadFinishWait" prefHeight="39.0" prefWidth="213.0" text=" Ya atendido">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="CHECK" />
                                        </graphic>
                                     </Button>
-                                    <TextArea layoutX="14.0" layoutY="270.0" prefHeight="200.0" prefWidth="383.0" promptText="Nota">
+                                    <TextArea fx:id="turnWaitNoteArea" layoutX="14.0" layoutY="270.0" prefHeight="200.0" prefWidth="383.0" promptText="Nota">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </TextArea>
-                                    <ComboBox layoutX="403.0" layoutY="49.0" prefHeight="25.0" prefWidth="213.0" promptText="Filtrar por razon">
+                                    <ComboBox fx:id="reasonWaitCombo" layoutX="403.0" layoutY="49.0" prefHeight="25.0" prefWidth="213.0" promptText="Filtrar por razon">
                                     <items>
                                           <FXCollections fx:factory="observableArrayList">
                                             <String fx:value="Observación" />
@@ -328,7 +321,7 @@
                                           </FXCollections>
                                         </items>
                                     </ComboBox>
-                                    <TableView layoutX="623.0" layoutY="49.0" prefHeight="210.0" prefWidth="363.0">
+                                    <TableView fx:id="finishedWaitTable" layoutX="623.0" layoutY="49.0" prefHeight="210.0" prefWidth="363.0">
                                        <columns>
                                           <TableColumn prefWidth="75.0" text="Cliente" />
                                           <TableColumn prefWidth="75.0" text="Mascota" />

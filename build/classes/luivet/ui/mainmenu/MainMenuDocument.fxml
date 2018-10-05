@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.geometry.Insets?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <StackPane id="rootPane" prefHeight="625.0" prefWidth="1000.0" styleClass="custom-pane" stylesheets="@../res/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="luivet.ui.mainmenu.MainMenuDocumentController">
@@ -28,103 +35,332 @@
                      <tabs>
                           <Tab fx:id="bookIssueTab" closable="false" styleClass="tab-main" text="Clientes">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <HBox>
-                                        <HBox prefHeight="412.0" prefWidth="557.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                           <children>
-                                               <JFXTextField promptText="Buscar">
-                                               </JFXTextField>
-                                               <JFXButton text="Buscar">
-                                                <HBox.margin>
-                                                   <Insets left="10.0" />
-                                                </HBox.margin>
-                                                <graphic>
-                                                   <FontAwesomeIconView glyphName="SEARCH" size="20" />
-                                                </graphic></JFXButton>
-                                               <JFXButton text="Agregar">
-                                                <HBox.margin>
-                                                   <Insets left="10.0" />
-                                                </HBox.margin>
-                                               <graphic>
-                                                   <FontAwesomeIconView glyphName="PLUS" size="20" />
-                                                </graphic></JFXButton>
-                                               <JFXButton text="Eliminar">
-                                                <HBox.margin>
-                                                   <Insets left="10.0" />
-                                                </HBox.margin>
-                                               <graphic>
-                                                   <FontAwesomeIconView glyphName="TIMES" size="20" />
-                                                </graphic></JFXButton>
-                                           </children>
-                                          <padding>
-                                             <Insets left="10.0" top="20.0" />
-                                          </padding>
-                                        </HBox>
-                                        <HBox prefHeight="412.0" prefWidth="557.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <children>
-                                               <VBox>
-                                                   <Label text="Mascotas" textFill="#e2e2e2">
-                                                     <font>
-                                                        <Font size="24.0" />
-                                                     </font></Label>
-                                                   <HBox>
-                                                     <TableView AnchorPane.rightAnchor="0.0" AnchorPane.leftAnchor="0.0" >
-                                                    <columns>
-                                                      <TableColumn prefWidth="75.0" text="Nombre" />
-                                                      <TableColumn prefWidth="75.0" text="Raza" />
-                                                      <TableColumn prefWidth="75.0" text="Sexo" />
-                                                      <TableColumn prefWidth="75.0" text="Edad" />
-                                                    </columns>
-                                                  </TableView>
-                                                  <VBox>
-                                                    <JFXButton text="Agregar">   
-                                                     <graphic>
-                                                         <FontAwesomeIconView glyphName="PLUS" size="20" />
-                                                      </graphic></JFXButton>
-                                                     <JFXButton text="Modificar">
-                                                     <graphic>
-                                                         <FontAwesomeIconView glyphName="PEN" size="20" />
-                                                      </graphic></JFXButton>
-                                                  </VBox>
-                                                  </HBox>
-                                               </VBox>
-                                           </children>
-                                        </HBox>
-                                       <opaqueInsets>
-                                          <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-                                       </opaqueInsets>
-                                       <padding>
-                                          <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                                       </padding>
-                                     </HBox>
+                                    <Button fx:id="searchClientButton" layoutX="230.0" layoutY="53.0" mnemonicParsing="false" onAction="#searchClient">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="SEARCH" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="modClientButton" layoutX="323.0" layoutY="53.0" mnemonicParsing="false" onAction="#modClient">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="PENCIL" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="addClientButton" layoutX="276.0" layoutY="53.0" mnemonicParsing="false" onAction="#addClient">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="PLUS" />
+                                       </graphic>
+                                    </Button>
+                                    <JFXTextField fx:id="searchClientField" layoutX="14.0" layoutY="51.0" onAction="#searchClient" prefHeight="37.0" prefWidth="198.0" promptText="Buscar" />
+                                    <Button fx:id="delClientButton" layoutX="369.0" layoutY="53.0" mnemonicParsing="false" onAction="#delClient">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="MINUS" />
+                                       </graphic>
+                                    </Button>
+                                    <Label layoutX="14.0" layoutY="14.0" text="Clientes" textFill="#e2e2e2">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <TableView fx:id="clientTable" layoutX="15.0" layoutY="110.0" prefHeight="150.0" prefWidth="394.0">
+                                      <columns>
+                                        
+                                      </columns>
+                                    </TableView>
+                                    <TableView fx:id="visitTable" layoutX="500.0" layoutY="356.0" prefHeight="169.0" prefWidth="480.0">
+                                      <columns>
+                                        <TableColumn prefWidth="75.0" text="Fecha" />
+                                        <TableColumn prefWidth="100.0" text="Ficha" />
+                                      </columns>
+                                    </TableView>
+                                    <Label layoutX="500.0" layoutY="14.0" text="Mascotas" textFill="#e2e2e2">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <TableView fx:id="petTable" layoutX="500.0" layoutY="110.0" prefHeight="152.0" prefWidth="311.0">
+                                      <columns>
+                                      </columns>
+                                    </TableView>
+                                    <ImageView fx:id="petPicture" fitHeight="147.0" fitWidth="147.0" layoutX="833.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+                                       <effect>
+                                          <Bloom />
+                                       </effect>
+                                       <image>
+                                          <Image url="@../res/sinimagen2.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="500.0" layoutY="270.0" text="Visitas" textFill="#e2e2e2">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="modPetButton" layoutX="547.0" layoutY="53.0" mnemonicParsing="false" onAction="#modPet">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="PENCIL" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="addPetButton" layoutX="500.0" layoutY="53.0" mnemonicParsing="false" onAction="#addPet">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="PLUS" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="delPetButton" layoutX="593.0" layoutY="53.0" mnemonicParsing="false" onAction="#delPet">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="MINUS" />
+                                       </graphic>
+                                    </Button>
+                                    <Label layoutX="15.0" layoutY="268.0" text="Turnos asignados" textFill="#e2e2e2">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="modTurnButton" layoutX="62.0" layoutY="307.0" mnemonicParsing="false" onAction="#modTurn">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="PENCIL" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="addTurnButton" layoutX="15.0" layoutY="307.0" mnemonicParsing="false" onAction="#addTurn">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="PLUS" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="delTurnButton" layoutX="108.0" layoutY="307.0" mnemonicParsing="false" onAction="#delTurn">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="MINUS" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="modVisitButton" layoutX="550.0" layoutY="307.0" mnemonicParsing="false" onAction="#modVisit">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="PENCIL" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="addVisitButton" layoutX="503.0" layoutY="307.0" mnemonicParsing="false" onAction="#addVisit">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="PLUS" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="delVisitButton" layoutX="596.0" layoutY="307.0" mnemonicParsing="false" onAction="#delVisit">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="MINUS" />
+                                       </graphic>
+                                    </Button>
+                                    <TableView fx:id="turnTable" layoutX="15.0" layoutY="356.0" prefHeight="169.0" prefWidth="394.0">
+                                       <columns>
+                                          <TableColumn prefWidth="75.0" text="Fecha" />
+                                          <TableColumn prefWidth="75.0" text="Razón" />
+                                       </columns>
+                                    </TableView>
+                                    <Button fx:id="waitPetButton" layoutX="638.0" layoutY="53.0" mnemonicParsing="false" onAction="#addWaitingList">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="BELL" />
+                                       </graphic>
+                                    </Button>
                                  </children>
                               </AnchorPane>
                            </content>
                           </Tab>
                         <Tab styleClass="tab-main" text="Turnos">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="14.0" text="Turnos" textFill="#e2e2e2">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXDatePicker fx:id="dateTurnSearchField" layoutX="14.0" layoutY="49.0" onAction="#loadDateTurn" prefHeight="37.0" prefWidth="242.0" promptText="Fecha" />
+                                    <TableView fx:id="turnResultTable" layoutX="14.0" layoutY="86.0" onKeyReleased="#searchClient" prefHeight="436.0" prefWidth="530.0">
+                                      <columns>
+                                        <TableColumn prefWidth="75.0" text="Dia" />
+                                        <TableColumn prefWidth="75.0" text="Hora" />
+                                        <TableColumn prefWidth="90.0" text="Se atiende" />
+                                        <TableColumn prefWidth="75.0" text="Razon" />
+                                        
+                                      </columns>
+                                    </TableView>
+                                    <ComboBox fx:id="dateTurnCombo" layoutX="260.0" layoutY="55.0" onAction="#loadDateTurn" prefHeight="25.0" prefWidth="170.0" promptText="Filtro Fechas">
+                                        <items>
+                                          <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="Día actual" />
+                                            <String fx:value="Día anterior" />
+                                            <String fx:value="Día siguiente" />
+                                            <String fx:value="Semana actual" />
+                                            <String fx:value="Semana anterior" />
+                                            <String fx:value="Semana siguiente" />
+                                            <String fx:value="Mes actual" />
+                                            <String fx:value="Mes anterior" />
+                                            <String fx:value="Mes siguiente" />
+                                            <String fx:value="Todos los turnos a partir de hoy" />
+                                          </FXCollections>
+                                        </items>
+                                    </ComboBox>
+                                    <Label layoutX="628.0" layoutY="14.0" text="Cliente" textFill="#e2e2e2">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="628.0" layoutY="142.0" text="Nota" textFill="#e2e2e2">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <TableView fx:id="clientResultTable" layoutX="628.0" layoutY="50.0" prefHeight="92.0" prefWidth="357.0">
+                                      <columns>
+                                        <TableColumn prefWidth="75.0" text="Nombre" />
+                                        <TableColumn prefWidth="80.0" text="Dirección" />
+                                        <TableColumn prefWidth="90.0" text="Celular" />
+                                        <TableColumn prefWidth="80.0" text="Telefono" />
+                                      </columns>
+                                    </TableView>
+                                    <ComboBox fx:id="reasonTurnCombo" layoutX="438.0" layoutY="55.0" onAction="#loadDateTurn" prefHeight="25.0" prefWidth="105.0" promptText="Filtro Razon">
+                                        <items>
+                                          <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="Observación" />
+                                            <String fx:value="Vacuna" />
+                                            <String fx:value="Peluquería" />
+                                            <String fx:value="Cirugía" />
+                                            <String fx:value="Consulta" />
+                                            <String fx:value="Semana siguiente" />
+                                            <String fx:value="Especialidad" />
+                                            <String fx:value="Ecografia / Rayos" />
+                                          </FXCollections>
+                                        </items>
+                                    </ComboBox>
+                                    <TextArea fx:id="turNoteResultArea" layoutX="628.0" layoutY="178.0" prefHeight="169.0" prefWidth="359.0" promptText="Nota de turno">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></TextArea>
+                                 </children></AnchorPane>
                           </content>
                         </Tab>
                         <Tab styleClass="tab-main" text="Productos">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="14.0" text="Productos" textFill="#e2e2e2">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField id="productSearchField" layoutX="14.0" layoutY="46.0" promptText="Buscar" />
+                                    <Button fx:id="searchProductButton" layoutX="204.0" layoutY="47.0" mnemonicParsing="false" onAction="#loadSearchProduct">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="SEARCH" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="addProductButton" layoutX="250.0" layoutY="47.0" mnemonicParsing="false" onAction="#loadAddProduct">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="PLUS" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="delProductButton" layoutX="293.0" layoutY="47.0" mnemonicParsing="false" onAction="#loadDelProduct">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="MINUS" />
+                                       </graphic>
+                                    </Button>
+                                    <TableView fx:id="productResultTable" layoutX="14.0" layoutY="131.0" prefHeight="387.0" prefWidth="450.0">
+                                      <columns>
+                                        <TableColumn prefWidth="84.0" text="Articulo" />
+                                        <TableColumn prefWidth="66.0" text="ID" />
+                                        <TableColumn prefWidth="86.0" text="Categoría" />
+                                        <TableColumn prefWidth="156.0" text="Proxima aplicación" />
+                                        
+                                        
+                                      </columns>
+                                    </TableView>
+                                    <ComboBox fx:id="categoryProductCombo" layoutX="14.0" layoutY="93.0" onAction="#loadSearchProduct" prefWidth="150.0" promptText="Filtrar por categoría" />
+                                 </children></AnchorPane>
                           </content>
-                        </Tab>
-                        <Tab styleClass="tab-main" text="Estudios complementarios">
-                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                           </content>
                         </Tab>
                         <Tab styleClass="tab-main" text="En espera">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="14.0" text="Lista de espera para atención" textFill="#e2e2e2">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <TableView fx:id="waitPetTable" layoutX="14.0" layoutY="49.0" prefHeight="210.0" prefWidth="383.0">
+                                      <columns>
+                                        <TableColumn prefWidth="75.0" text="Cliente" />
+                                        <TableColumn prefWidth="75.0" text="Mascota" />
+                                        <TableColumn prefWidth="75.0" text="Especie" />
+                                        <TableColumn prefWidth="75.0" text="Razon" />
+                                        
+                                      </columns>
+                                    </TableView>
+                                    <Button fx:id="loadWaitVisitButton" alignment="CENTER" layoutX="403.0" layoutY="90.0" mnemonicParsing="false" onAction="#loadWaitVisit" prefHeight="39.0" prefWidth="213.0" text=" Historial clínico">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="LIST" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="finishWaitButton" alignment="CENTER" layoutX="403.0" layoutY="141.0" mnemonicParsing="false" onAction="#loadFinishWait" prefHeight="39.0" prefWidth="213.0" text=" Ya atendido">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="CHECK" />
+                                       </graphic>
+                                    </Button>
+                                    <TextArea fx:id="turnWaitNoteArea" layoutX="14.0" layoutY="270.0" prefHeight="200.0" prefWidth="383.0" promptText="Nota">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextArea>
+                                    <ComboBox fx:id="reasonWaitCombo" layoutX="403.0" layoutY="49.0" prefHeight="25.0" prefWidth="213.0" promptText="Filtrar por razon">
+                                    <items>
+                                          <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="Observación" />
+                                            <String fx:value="Vacuna" />
+                                            <String fx:value="Peluquería" />
+                                            <String fx:value="Cirugía" />
+                                            <String fx:value="Consulta" />
+                                            <String fx:value="Semana siguiente" />
+                                            <String fx:value="Especialidad" />
+                                            <String fx:value="Ecografia / Rayos" />
+                                          </FXCollections>
+                                        </items>
+                                    </ComboBox>
+                                    <TableView fx:id="finishedWaitTable" layoutX="623.0" layoutY="49.0" prefHeight="210.0" prefWidth="363.0">
+                                       <columns>
+                                          <TableColumn prefWidth="75.0" text="Cliente" />
+                                          <TableColumn prefWidth="75.0" text="Mascota" />
+                                          <TableColumn prefWidth="75.0" text="Especie" />
+                                          <TableColumn prefWidth="75.0" text="Razon" />
+                                       </columns>
+                                    </TableView>
+                                    <Label layoutX="623.0" layoutY="14.0" text="Ya se atendieron" textFill="#e2e2e2">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                 </children></AnchorPane>
                            </content>
                         </Tab>
                      </tabs></JFXTabPane>
                </children>
             </AnchorPane>
+            <MenuBar layoutX="14.0" layoutY="13.0" prefHeight="25.0" prefWidth="979.0" AnchorPane.bottomAnchor="587.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Archivo">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Salir" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Backups">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Crear" />
+                    <MenuItem mnemonicParsing="false" text="Cargar" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Ayuda">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Tutoriales" />
+                    <MenuItem mnemonicParsing="false" text="Acerca" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
          </children>
       </AnchorPane>
       
