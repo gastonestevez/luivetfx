@@ -20,7 +20,7 @@
          <children>
             <AnchorPane id="rootAnchorPane" prefHeight="625.0" prefWidth="780.0">
                <children>
-                  <Label layoutX="14.0" layoutY="14.0" text="Agregar mascota" textFill="#e2e2e2">
+                  <Label fx:id="tituloLabel" layoutX="14.0" layoutY="14.0" text="Agregar mascota" textFill="#e2e2e2">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -30,40 +30,40 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <JFXTextField layoutX="14.0" layoutY="122.0" promptText="Nombre" />
-                  <JFXDatePicker layoutX="230.0" layoutY="249.0" prefHeight="37.0" prefWidth="180.0" promptText="Nacimiento" />
-                  <JFXTextField layoutX="230.0" layoutY="122.0" promptText="Chip" />
-                  <JFXTextField layoutX="14.0" layoutY="190.0" promptText="Especie" />
-                  <JFXTextField layoutX="230.0" layoutY="190.0" promptText="Raza" />
-                  <JFXTextField layoutX="442.0" layoutY="190.0" promptText="Color" />
-                  <JFXTextField layoutX="230.0" layoutY="312.0" prefHeight="37.0" prefWidth="180.0" promptText="Causa" />
-                  <Button layoutX="14.0" layoutY="540.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="216.0">
+                  <JFXTextField fx:id="nombreField" layoutX="14.0" layoutY="122.0" promptText="Nombre" />
+                  <JFXDatePicker fx:id="nacimientoDate" layoutX="230.0" layoutY="249.0" prefHeight="37.0" prefWidth="180.0" promptText="Nacimiento" />
+                  <JFXTextField fx:id="chipField" layoutX="230.0" layoutY="122.0" promptText="Chip" />
+                  <JFXTextField fx:id="especiaField" layoutX="14.0" layoutY="190.0" promptText="Especie" />
+                  <JFXTextField fx:id="razaField" layoutX="230.0" layoutY="190.0" promptText="Raza" />
+                  <JFXTextField fx:id="colorField" layoutX="442.0" layoutY="190.0" promptText="Color" />
+                  <JFXTextField fx:id="causaField" layoutX="230.0" layoutY="312.0" prefHeight="37.0" prefWidth="180.0" promptText="Causa" />
+                  <Button fx:id="okButton" layoutX="14.0" layoutY="540.0" mnemonicParsing="false" onAction="#confirmarAccion" prefHeight="39.0" prefWidth="216.0">
                      <graphic>
                         <FontAwesomeIconView glyphName="CHECK" />
                      </graphic>
                   </Button>
-                  <Button layoutX="569.0" layoutY="540.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="216.0">
+                  <Button fx:id="cancelButton" layoutX="569.0" layoutY="540.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="39.0" prefWidth="216.0">
                      <graphic>
                         <FontAwesomeIconView glyphName="CLOSE" />
                      </graphic>
                   </Button>
-                  <ComboBox layoutX="14.0" layoutY="255.0" prefHeight="25.0" prefWidth="180.0" promptText="Sexo" />
-                  <JFXCheckBox checkedColor="#bbdaca" layoutX="489.0" layoutY="87.0" text="Esterilizado" textFill="#e2e2e2" unCheckedColor="#e2e2e2">
+                  <ComboBox fx:id="sexoCombo" layoutX="14.0" layoutY="255.0" prefHeight="25.0" prefWidth="180.0" promptText="Sexo" />
+                  <JFXCheckBox fx:id="esterilizadoCheck" checkedColor="#bbdaca" layoutX="489.0" layoutY="87.0" text="Esterilizado" textFill="#e2e2e2" unCheckedColor="#e2e2e2">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXCheckBox>
-                  <JFXDatePicker layoutX="14.0" layoutY="312.0" prefHeight="37.0" prefWidth="180.0" promptText="Deceso" />
-                  <ComboBox layoutX="14.0" layoutY="374.0" prefHeight="25.0" prefWidth="180.0" promptText="Ambiente" />
-                  <ComboBox layoutX="230.0" layoutY="374.0" prefHeight="25.0" prefWidth="180.0" promptText="Alimentación" />
-                  <JFXTextField layoutX="442.0" layoutY="368.0" prefHeight="37.0" prefWidth="310.0" promptText="Frecuencia de alimentación por día" />
-                  <JFXTextField layoutX="14.0" layoutY="427.0" prefHeight="37.0" prefWidth="399.0" promptText="Observación" />
-                  <Button layoutX="565.0" layoutY="35.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="42.0">
+                  <JFXDatePicker fx:id="decesoDate" layoutX="14.0" layoutY="312.0" prefHeight="37.0" prefWidth="180.0" promptText="Deceso" />
+                  <ComboBox fx:id="ambienteCombo" layoutX="14.0" layoutY="374.0" prefHeight="25.0" prefWidth="180.0" promptText="Ambiente" />
+                  <ComboBox fx:id="alimentacionCombo" layoutX="230.0" layoutY="374.0" prefHeight="25.0" prefWidth="180.0" promptText="Alimentación" />
+                  <JFXTextField fx:id="frecuenciaField" layoutX="442.0" layoutY="368.0" prefHeight="37.0" prefWidth="310.0" promptText="Frecuencia de alimentación por día" />
+                  <JFXTextField fx:id="observacionesField" layoutX="14.0" layoutY="427.0" prefHeight="37.0" prefWidth="399.0" promptText="Observación" />
+                  <Button fx:id="fotoButton" layoutX="565.0" layoutY="35.0" mnemonicParsing="false" onAction="#seleccionarFoto" prefHeight="39.0" prefWidth="42.0">
                      <graphic>
                         <FontAwesomeIconView glyphName="CAMERA" text="" />
                      </graphic>
                   </Button>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="616.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="fotoImage" fitHeight="150.0" fitWidth="200.0" layoutX="616.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../res/sinimagen2.png" />
                      </image>

@@ -8,6 +8,7 @@ package luivet.ui.mainmenu;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.logging.Level;
@@ -19,7 +20,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -29,6 +33,8 @@ import javafx.stage.Stage;
 import luivet.DAO.ClienteDAO;
 import luivet.DAO.MascotaDAO;
 import luivet.handler.Handler;
+import luivet.ui.editcliente.ClienteDocumentController;
+import luivet.ui.editpet.PetDocumentController;
 
 /**
  * FXML Controller class
@@ -37,6 +43,8 @@ import luivet.handler.Handler;
  */
 public class MainMenuDocumentController implements Initializable {
     private Handler handler;
+    private ObservableList<ClienteDAO> listadoObservableDeClientes;
+    private ObservableList<MascotaDAO> listadoObservableDeMascotas;
     @FXML
     private JFXTextField searchClientField;
     @FXML
@@ -54,11 +62,12 @@ public class MainMenuDocumentController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        handler = Handler.getInstance();
         loadClientTable();
         loadPetTable();
-        System.out.println("cargo ui mainmenu");
         modClientButton.setDisable(true);
         modPetButton.setDisable(true);
+        obtenerTodosLosClientes();
         
         clientTable.getSelectionModel().selectedItemProperty().addListener((obs,oldSelection,newSelection)-> {
         if(newSelection != null){
@@ -86,40 +95,69 @@ public class MainMenuDocumentController implements Initializable {
         System.out.println("Click!");
     }
     
+    private void obtenerTodosLosClientes(){
+        listadoObservableDeClientes = FXCollections.observableArrayList(handler.buscarCliente(""));
+        clientTable.setItems(listadoObservableDeClientes);
+        petTable.setItems(null);
+    }
     
     //CLIENT 
     @FXML
     private void searchClient(ActionEvent event){
-        Set<ClienteDAO> conjuntoDeClientes = handler.getInstance().buscarCliente(searchClientField.getText());
+        Set<ClienteDAO> conjuntoDeClientes = handler.buscarCliente(searchClientField.getText());
         ObservableList<ClienteDAO> conjunto = FXCollections.observableArrayList(conjuntoDeClientes);
         clientTable.setItems(conjunto);
-        petTable.setItems(null);
-        
+        petTable.setItems(null);  
     }
+    
     @FXML
     private void addClient(ActionEvent event){
-       handler.getInstance().intercambiarInterfaz("editcliente/clienteDocument","Agregar cliente", false, event);
+       FXMLLoader cargarInterfazCliente = handler.intercambiarInterfaz("editcliente/clienteDocument","Agregar cliente", false, event);
+       ClienteDocumentController cdc = cargarInterfazCliente.getController();
+       cdc.setObservableClientData(listadoObservableDeClientes);
+       
     }
+    
     @FXML
     private void modClient(ActionEvent event){
        ClienteDAO selectedClient = (ClienteDAO) clientTable.getSelectionModel().getSelectedItem();
-       handler.setModCliente(selectedClient); //TODO <<-- ERROR
-       handler.getInstance().intercambiarInterfaz("editcliente/clienteDocument","Modificar cliente", false, event);
+       handler.setModCliente(selectedClient);
+       FXMLLoader cargarInterfazCliente = handler.intercambiarInterfaz("editcliente/clienteDocument","Modificar cliente", false, event);
+       ClienteDocumentController cdc = cargarInterfazCliente.getController();
+       cdc.setObservableClientData(listadoObservableDeClientes);
        
     }
     @FXML
     private void delClient(ActionEvent event){
-        
+        ClienteDAO clienteSeleccionado = (ClienteDAO) clientTable.getSelectionModel().getSelectedItem();
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Eliminar registro");
+        alert.setHeaderText("Aviso de confirmación");
+        alert.setContentText("Desea eliminar a: " + clienteSeleccionado.getNombre() + "?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if(result.get() == ButtonType.OK){
+            handler.removeCliente(clienteSeleccionado);
+            listadoObservableDeClientes.remove(clienteSeleccionado);
+        }
     }
     
     //PET AREA
+    
+    private void buscarMascotas(ClienteDAO clienteSeleccionado) {
+        Set<MascotaDAO> mascotasEncontradas = handler.buscarMascota(clienteSeleccionado.getId());
+        listadoObservableDeMascotas = FXCollections.observableArrayList(mascotasEncontradas);
+        petTable.setItems(listadoObservableDeMascotas); 
+    }
+    
     @FXML
     private void modPet(ActionEvent event){
         
     }
     @FXML
     private void addPet(ActionEvent event){
-        handler.getInstance().intercambiarInterfaz("editpet/petDocument","Agregar mascota", false, event);
+        FXMLLoader cargarInterfazMascota = handler.getInstance().intercambiarInterfaz("editpet/petDocument","Agregar mascota", false, event);
+        PetDocumentController pdc = cargarInterfazMascota.getController();
+        pdc.setObservablePetData(listadoObservableDeMascotas);
     }
     @FXML
     private void delPet(ActionEvent event){
@@ -133,7 +171,7 @@ public class MainMenuDocumentController implements Initializable {
     //TURN AREA
     @FXML
     private void addTurn(ActionEvent event){
-        handler.getInstance().intercambiarInterfaz("editturno/TurnoDocument","Agregar turno", false, event);
+        handler.intercambiarInterfaz("editturno/TurnoDocument","Agregar turno", false, event);
     }
     @FXML
     private void modTurn(ActionEvent event){
@@ -147,7 +185,7 @@ public class MainMenuDocumentController implements Initializable {
     //VISIT AREA
     @FXML
     private void addVisit(ActionEvent event){
-        handler.getInstance().intercambiarInterfaz("editvisita/visitaDocument","Agregar visita", false, event);
+        handler.intercambiarInterfaz("editvisita/visitaDocument","Agregar visita", false, event);
     }
     @FXML
     private void modVisit(ActionEvent event){
@@ -171,7 +209,7 @@ public class MainMenuDocumentController implements Initializable {
     }
     @FXML
     private void loadAddProduct(ActionEvent event){
-        handler.getInstance().intercambiarInterfaz("editproducto/productoDocument","Agregar producto", false, event);
+        handler.intercambiarInterfaz("editproducto/productoDocument","Agregar producto", false, event);
     }
     @FXML
     private void loadDelProduct(ActionEvent event){
@@ -205,12 +243,6 @@ public class MainMenuDocumentController implements Initializable {
         clientTable.getColumns().addAll(nombreCol,direccionCol,celularCol);
     }
 
-    private void buscarMascotas(ClienteDAO clienteSeleccionado) {
-        Set<MascotaDAO> mascotasEncontradas = handler.getInstance().buscarMascota(clienteSeleccionado.getId());
-        ObservableList<MascotaDAO> conjunto = FXCollections.observableArrayList(mascotasEncontradas);
-        petTable.setItems(conjunto);
-    
-    }
 
     private void buscarTurnos(ClienteDAO clienteSeleccionado) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

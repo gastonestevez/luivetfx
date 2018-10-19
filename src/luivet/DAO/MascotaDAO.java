@@ -48,22 +48,22 @@ public class MascotaDAO {
         try {    
             while(resultados.next()){
                 MascotaDAO m = new MascotaDAO();
-                m.id = resultados.getString("id");
-                m.nombre = resultados.getString("nombre_texto");
-                m.ownerId =  resultados.getString("owner_id");
-                m.foto = resultados.getString("foto");
-                m.color = resultados.getString("color_texto");
-                m.deceso = resultados.getString("deceso_date");
-                m.raza = resultados.getString("raza_texto");
-                m.sexo = resultados.getString("sexo_texto");
-                m.alimentacion = resultados.getString("alimentacion");
-                m.alimentacionFrecuencia = resultados.getString("alimentacion_frecuencia");
-                m.ambiente = resultados.getString("ambiente");
-                m.decesoCausa = resultados.getString("causa_deceso");
-                m.medicadoObservacion = resultados.getString("medicado_observacion");
-                m.chip = resultados.getString("chip");
-                m.esterilizado = resultados.getString("esterilizado");
-                m.birthdayDate = resultados.getString("birthday_date");
+                m.setId(resultados.getString("id"));
+                m.setNombre(resultados.getString("nombre_texto"));
+                m.setOwnerId(resultados.getString("owner_id"));
+                m.setFoto(resultados.getString("foto"));
+                m.setColor(resultados.getString("color_texto"));
+                m.setDeceso(resultados.getString("deceso_date"));
+                m.setRaza(resultados.getString("raza_texto"));
+                m.setSexo(resultados.getString("sexo_texto"));
+                m.setAlimentacion(resultados.getString("alimentacion"));
+                m.setAlimentacionFrecuencia(resultados.getString("alimentacion_frecuencia"));
+                m.setAmbiente(resultados.getString("ambiente"));
+                m.setDecesoCausa(resultados.getString("causa_deceso"));
+                m.setMedicadoObservacion(resultados.getString("medicado_observacion"));
+                m.setChip(resultados.getString("chip"));
+                m.setEsterilizado(resultados.getString("esterilizado"));
+                m.setBirthdayDate(resultados.getString("birthday_date"));
                 mascotasEncontradas.add(m);
                 
             }
@@ -125,4 +125,124 @@ public class MascotaDAO {
     public String getEspecie(){
         return especie;
     }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * @param ownerId the ownerId to set
+     */
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    /**
+     * @param foto the foto to set
+     */
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    /**
+     * @param color the color to set
+     */
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    /**
+     * @param deceso the deceso to set
+     */
+    public void setDeceso(String deceso) {
+        this.deceso = deceso;
+    }
+
+    /**
+     * @param decesoCausa the decesoCausa to set
+     */
+    public void setDecesoCausa(String decesoCausa) {
+        this.decesoCausa = decesoCausa;
+    }
+
+    /**
+     * @param raza the raza to set
+     */
+    public void setRaza(String raza) {
+        this.raza = raza;
+    }
+
+    /**
+     * @param sexo the sexo to set
+     */
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    /**
+     * @param alimentacion the alimentacion to set
+     */
+    public void setAlimentacion(String alimentacion) {
+        this.alimentacion = alimentacion;
+    }
+
+    /**
+     * @param alimentacionFrecuencia the alimentacionFrecuencia to set
+     */
+    public void setAlimentacionFrecuencia(String alimentacionFrecuencia) {
+        this.alimentacionFrecuencia = alimentacionFrecuencia;
+    }
+
+    /**
+     * @param ambiente the ambiente to set
+     */
+    public void setAmbiente(String ambiente) {
+        this.ambiente = ambiente;
+    }
+
+    /**
+     * @param medicadoObservacion the medicadoObservacion to set
+     */
+    public void setMedicadoObservacion(String medicadoObservacion) {
+        this.medicadoObservacion = medicadoObservacion;
+    }
+
+    /**
+     * @param chip the chip to set
+     */
+    public void setChip(String chip) {
+        this.chip = chip;
+    }
+
+    /**
+     * @param esterilizado the esterilizado to set
+     */
+    public void setEsterilizado(String esterilizado) {
+        this.esterilizado = esterilizado;
+    }
+
+    /**
+     * @param birthdayDate the birthdayDate to set
+     */
+    public void setBirthdayDate(String birthdayDate) {
+        this.birthdayDate = birthdayDate;
+    }
+
+    /**
+     * @param especie the especie to set
+     */
+    public void setEspecie(String especie) {
+        this.especie = especie;
+    }
+    
 }

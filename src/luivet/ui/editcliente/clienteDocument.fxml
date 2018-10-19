@@ -37,12 +37,13 @@
                      </font>
                   </Label>
                   <JFXTextField fx:id="nombreField" layoutX="14.0" layoutY="122.0" promptText="Nombre y Apellido" />
-                  <JFXDatePicker fx:id="dateField" layoutX="256.0" layoutY="123.0" promptText="Fecha de inscripción" />
+                  <JFXDatePicker fx:id="dateClientField" layoutX="256.0" layoutY="123.0" promptText="Fecha de inscripción" />
                   <JFXTextField fx:id="domicilioField" layoutX="14.0" layoutY="225.0" promptText="Domicilio" />
                   <JFXTextField fx:id="postalField" layoutX="256.0" layoutY="225.0" promptText="Codigo postal" />
                   <JFXTextField fx:id="telefonoField" layoutX="14.0" layoutY="333.0" promptText="Telefono" />
                   <JFXTextField fx:id="celularField" layoutX="246.0" layoutY="333.0" promptText="Celular" />
                   <JFXTextField fx:id="mailField" layoutX="14.0" layoutY="389.0" promptText="Email" />
+                 
                   <Button fx:id="okButton" layoutX="14.0" layoutY="488.0" mnemonicParsing="false" onAction="#okButtonHandle" prefHeight="39.0" prefWidth="216.0">
                      <graphic>
                         <FontAwesomeIconView glyphName="CHECK" />
